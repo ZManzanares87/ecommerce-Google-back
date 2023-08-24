@@ -1,0 +1,2 @@
+api base y entidad user sin ningun campo
+commit 
