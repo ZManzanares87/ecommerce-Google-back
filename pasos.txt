@@ -1,3 +1,4 @@
 api base y entidad user sin ningun campo
 commit api base y entidad user sin ningun campo
 commit entidades y relaciones
+commit crud de todas entidades
