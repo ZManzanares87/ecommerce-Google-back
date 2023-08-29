@@ -1,3 +1,10 @@
 los pasos de mi repos
 habra que reenviar cuando se registren a una plantilla que diga quese
 enviara un email para confirmar registro 
+hago commit
+
+despues del utlimo commit he creado entidad productos y crud 
+creo el apiProductcontroller para poder enseñar los productos a todo el mundo con PUBLIC_ACCESS
+y lo copio del smartfoodback en el productrepositori copio los dos metodos del productsrepository
+creo las entidades, las relaciones y los crud artista producto categoria
+y hago otro commit
