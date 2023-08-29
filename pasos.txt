@@ -1,0 +1,26 @@
+symfonytoken repositorio jorge
+Instalo
+symfony new symfony-token.api-inicio --version=5.4
+symfony composer require api
+composer require symfony/orm-pack   sin docker
+composer require symfony/maker-bundle
+composer update
+composer require form validator twig-bundle security-csrf annotations
+composer require symfony/security-bundle
+composer require symfonycasts/verify-email-bundle
+composer require symfony/mailer
+composer require --dev symfony/profiler-pack
+composer require lexik/jwt-authentication-bundle
+
+
+DATABASE_URL="mysql://root:@127.0.0.1:3306/google-token-api-inicio?serverVersion=8&charset=utf8mb4"
+Crear usuario: php bin/console make:user
+ php bin/console make:registration-form
+ php bin/console make:auth 
+ php bin/console doctrine:database:create
+  php bin/console doctrine:schema:update --force
+ .env añado MAILER_DSN="gmail+smtp://juananprog@gmail.com:tuoczynqywiyftvl@smpt.gmail.com:25"
+ Control de acceso por rol admin en el security.yaml - { path: ^/admin, roles: ROLE_ADMIN }
+ Creamos el controlador de admin: php bin/console make:controller
+
+ ############## recordar custoautenticator hay que marcar la casilla de recuerdame por si hay que pasarla por parametro en el header###########
