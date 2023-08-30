@@ -1,0 +1,9 @@
+framework:
+    mailer:
+        dsn: '%env(MAILER_DSN)%'
+when@dev:
+    framework:
+        mailer:
+            envelope:
+                # sender: "juananprog@gmail.com" si pongo el que envia no me hace el smpt
+                recipients: ["garciagalindo@telefonica.net"]
