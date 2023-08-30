@@ -52,10 +52,11 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/api/login, roles: PUBLIC_ACCESS }
-         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+         
+        
          - { path: ^/api/product,       roles:  PUBLIC_ACCESS }
-         - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        # - { path: ^/profile, roles: ROLE_USER }
+         
+         - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
     security:

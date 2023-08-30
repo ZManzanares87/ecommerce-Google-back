@@ -8,3 +8,5 @@ creo el apiProductcontroller para poder enseñar los productos a todo el mundo c
 y lo copio del smartfoodback en el productrepositori copio los dos metodos del productsrepository
 creo las entidades, las relaciones y los crud artista producto categoria
 y hago otro commit
+
+copio la function front register de RegistrationController de jorge token
