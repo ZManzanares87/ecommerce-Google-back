@@ -9,4 +9,6 @@ y lo copio del smartfoodback en el productrepositori copio los dos metodos del p
 creo las entidades, las relaciones y los crud artista producto categoria
 y hago otro commit
 
-copio la function front register de RegistrationController de jorge token
+Modificado registration controler Alex
+ApiProductController copiado de smartfoodback para modificar
+

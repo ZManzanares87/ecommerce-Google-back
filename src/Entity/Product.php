@@ -35,6 +35,9 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Artist::class)]
     private Collection $artists;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $qr = null;
+
     public function __construct()
     {
         $this->artists = new ArrayCollection();
@@ -137,5 +140,17 @@ class Product
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getQr(): ?string
+    {
+        return $this->qr;
+    }
+
+    public function setQr(?string $qr): static
+    {
+        $this->qr = $qr;
+
+        return $this;
     }
 }

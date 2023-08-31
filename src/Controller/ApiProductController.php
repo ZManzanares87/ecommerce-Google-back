@@ -10,55 +10,64 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApiProductController extends AbstractController
 {
     #[Route('/api/products', name: 'app_api_products_index',methods: ['GET'])]
-    public function index(ProductRepository $productsRepository): Response
-    {
+    public function index(ProductRepository $productRepository): Response
+    {   
+        return $this->render('product/index.html.twig', [
+            'products' => $productRepository->findAll(),
+        ]);
+        // return $this->render('product/index.html.twig', [
+        //     'controller_name' => 'ApiProductController',
+        // ]);
         // API URL: http://127.0.0.1:8000/api/products
+        // $products = $productRepository->findAll();
 
-        $products = $productsRepository->createQueryBuilder('p')
-        ->select('p', 'c', 'pr')
-        ->leftJoin('p.category', 'c')
-        ->leftJoin('p.presentation', 'pr')
-        ->getQuery()
-        ->getResult();
+        // return $this->json($products, 200, ['Access-Control-Allow-Origin' => '*']);
 
-        $data = [];
+        // $products = $productsRepository->createQueryBuilder('p')
+        // ->select('p', 'c', 'pr')
+        // ->leftJoin('p.category', 'c')
+        // ->leftJoin('p.presentation', 'pr')
+        // ->getQuery()
+        // ->getResult();
 
-        foreach ($products as $pd) {
-            $categoryData = [];
-            $presentationData = [];
+        // $data = [];
 
-            // Obtenemos los datos de la entidad Category
-            foreach ($pd->getCategory() as $category) {
-                $categoryData[] = [
-                    'id' => $category->getId(),
-                    'typeCategory' => $category->getTypeCategory(),
-                ];
-            }
+        // foreach ($products as $pd) {
+        //     $categoryData = [];
+        //     $presentationData = [];
 
-            // Obtenemos los datos de la entidad Presentation
-            foreach ($pd->getPresentation() as $presentation) {
-                $presentationData[] = [
-                    'id' => $presentation->getId(),
-                    'typePresentation' => $presentation->getTypePresentation(),
-                ];
-            }
+        //     // Obtenemos los datos de la entidad Category
+        //     foreach ($pd->getCategory() as $category) {
+        //         $categoryData[] = [
+        //             'id' => $category->getId(),
+        //             'typeCategory' => $category->getTypeCategory(),
+        //         ];
+        //     }
 
-            $data[] = [
-                'id' => $pd->getId(),
-                'name' => $pd->getName(),
-                'description' => $pd->getDescription(),
-                'price' => $pd->getPrice(),
-                'quantity' => $pd->getQuantity(),
-                'state' => $pd->isState(),
-                'photo' => $pd->getPhoto(),
-                'category' => $categoryData,
-                'presentation' => $presentationData,
-            ];
-        }
+        //     // Obtenemos los datos de la entidad Presentation
+        //     foreach ($pd->getPresentation() as $presentation) {
+        //         $presentationData[] = [
+        //             'id' => $presentation->getId(),
+        //             'typePresentation' => $presentation->getTypePresentation(),
+        //         ];
+        //     }
+
+        //     $data[] = [
+        //         'id' => $pd->getId(),
+        //         'name' => $pd->getName(),
+        //         'description' => $pd->getDescription(),
+        //         'price' => $pd->getPrice(),
+        //         'quantity' => $pd->getQuantity(),
+        //         'state' => $pd->isState(),
+        //         'photo' => $pd->getPhoto(),
+        //         'category' => $categoryData,
+        //         'presentation' => $presentationData,
+        //     ];
+        // }
 
 
-        // dump($data);die;
-        // return $this->json($data);
-        return $this->json($data, $status = 200, $headers = ['Access-Control-Allow-Origin'=>'*']);
+        // // dump($data);die;
+        // // return $this->json($data);
+        // return $this->json($data, $status = 200, $headers = ['Access-Control-Allow-Origin'=>'*']);
     }
 }
