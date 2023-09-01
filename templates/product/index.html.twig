@@ -13,6 +13,7 @@
                 <th>Price</th>
                 <th>Image</th>
                 <th>Stock</th>
+                 <th>Qr</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ product.price }}</td>
                 <td>{{ product.image }}</td>
                 <td>{{ product.stock }}</td>
+                <td>{{ product.qr }}</td>
                 <td>
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
                     <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
