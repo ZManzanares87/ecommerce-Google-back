@@ -1,16 +1,19 @@
-<h1>Hi! Please confirm your email!</h1>
+<h1>Welcome {{ email.toName }}!</h1>
 {# <img src="{{ email.image('@images/google.png') }}" alt="Logo"> #}
 
 <p>
-	Please confirm your email address by clicking the following link:
+	Bienvenido a nuestra web:
 	<br><br>
 	{# <a href="{{ signedUrl|raw }}">Confirm my Email</a>. #}
-		    This link will expire in
+		    
 	{# {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}. #}
-</p>
+    <img src="{{ asset('assets/images/logo.png') }}" alt="Logo">
 
+</p>
+    <p>Su correo se ha enviado correctamente, gracias por contactar con  
+    Google 3D Aesthetic. No dejes de visitarnos en nuestro espacio en el metaverso.</p>
 <p>
-	Cheers!
+	Saludos.
 </p>
 {# 
 {% block content %}
