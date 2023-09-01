@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
@@ -25,7 +26,7 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
     #[Route('/token/register', name: 'register', methods:'POST')]
-    public function register(Request $request, ValidatorInterface $validator, ManagerRegistry $doctrine): JsonResponse
+    public function register(Request $request, ValidatorInterface $validator, ManagerRegistry $doctrine, MailerInterface $mailer): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
 
@@ -37,6 +38,18 @@ class RegistrationController extends AbstractController
         $em = $doctrine->getManager();
         $em->persist($user);
         $em->flush();
+
+        ##ENVIAR EMAIL 
+        $email = (new TemplatedEmail())
+        ->from(new Address('juananprog@gmail.com', 'Google 3D Aesthetics'))
+        ->to($user->getEmail())
+        ->subject('Gracias por registrarte')
+        ->htmlTemplate('emails/registration.html.twig')
+        ->context([
+            'user' => $user,
+        ]);
+
+    $mailer->send($email);
 
         return new JsonResponse(['success' => true]);
 
