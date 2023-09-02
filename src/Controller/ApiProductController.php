@@ -13,52 +13,19 @@ class ApiProductController extends AbstractController
     public function index(ProductRepository $productsRepository): Response
     {
         // API URL: http://127.0.0.1:8000/api/products
-
-        $products = $productsRepository->createQueryBuilder('p')
-        ->select('p', 'c', 'pr')
-        ->leftJoin('p.category', 'c')
-        ->leftJoin('p.presentation', 'pr')
-        ->getQuery()
-        ->getResult();
+       
+        $products = $productsRepository->findAll();
 
         $data = [];
-
-        foreach ($products as $pd) {
-            $categoryData = [];
-            $presentationData = [];
-
-            // Obtenemos los datos de la entidad Category
-            foreach ($pd->getCategory() as $category) {
-                $categoryData[] = [
-                    'id' => $category->getId(),
-                    'typeCategory' => $category->getTypeCategory(),
-                ];
-            }
-
-            // Obtenemos los datos de la entidad Presentation
-            foreach ($pd->getPresentation() as $presentation) {
-                $presentationData[] = [
-                    'id' => $presentation->getId(),
-                    'typePresentation' => $presentation->getTypePresentation(),
-                ];
-            }
-
+        foreach ($products as $product) {
             $data[] = [
-                'id' => $pd->getId(),
-                'name' => $pd->getName(),
-                'description' => $pd->getDescription(),
-                'price' => $pd->getPrice(),
-                'quantity' => $pd->getQuantity(),
-                'state' => $pd->isState(),
-                'photo' => $pd->getPhoto(),
-                'category' => $categoryData,
-                'presentation' => $presentationData,
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+                'image' => $product->getImage(),
+                //'qr' => $product->getQr(),
             ];
         }
 
-
-        // dump($data);die;
-        // return $this->json($data);
-        return $this->json($data, $status = 200, $headers = ['Access-Control-Allow-Origin'=>'*']);
+        return $this->json($data);
     }
 }
