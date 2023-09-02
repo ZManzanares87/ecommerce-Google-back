@@ -55,42 +55,46 @@ class RegistrationController extends AbstractController
 
 
     }
-    // #[Route('/register', name: 'app_register')]
-    // public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
-    // {
-    //     $user = new User();
-    //     $form = $this->createForm(RegistrationFormType::class, $user);
-    //     $form->handleRequest($request);
+    #[Route('/register', name: 'app_register')]
+    public function registerBack(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    {
+        $user = new User();
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
 
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         // encode the plain password
-    //         $user->setPassword(
-    //             $userPasswordHasher->hashPassword(
-    //                 $user,
-    //                 $form->get('plainPassword')->getData()
-    //             )
-    //         );
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
 
-    //         $entityManager->persist($user);
-    //         $entityManager->flush();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-    //         // generate a signed url and email it to the user
-    //         $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-    //             (new TemplatedEmail())
-    //                 ->from(new Address('juananprog@gmail.com', 'juananprogBotMail'))
-    //                 ->to($user->getEmail())
-    //                 ->subject('Please Confirm your Email')
-    //                 ->htmlTemplate('registration/confirmation_email.html.twig')
-    //         );
-    //         // do anything else you need here, like send an email
+            // generate a signed url and email it to the user
+           
+            // do anything else you need here, like send an email
+            $email = (new TemplatedEmail())
+        ->from(new Address('juananprog@gmail.com', 'Google 3D Aesthetics'))
+        ->to($user->getEmail())
+        ->subject('Gracias por registrarte')
+        ->htmlTemplate('emails/registration.html.twig')
+        ->context([
+            'user' => $user,
+        ]);
 
-    //         return $this->redirectToRoute('app_home');
-    //     }
+        $mailer->send($email); 
 
-    //     return $this->render('registration/register.html.twig', [
-    //         'registrationForm' => $form->createView(),
-    //     ]);
-    // }
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->render('registration/register.html.twig', [
+            'registrationForm' => $form->createView(),
+        ]);
+    }
     
     // #[Route('front/register', name: 'api_register')]
     // public function apiRegister(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
