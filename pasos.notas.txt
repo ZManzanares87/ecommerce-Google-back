@@ -15,4 +15,7 @@ copio la function front register de RegistrationController de jorge token
 ya esta registro login envio de email creada plantilla pero la base nada mas hay que revisar google/mailer en prod 
 
 easy/admin instalado instalo css/inliner
+no voy ausar easy admin si no datatables
+ya instalado en base.html.twig con cdn 
+
 
