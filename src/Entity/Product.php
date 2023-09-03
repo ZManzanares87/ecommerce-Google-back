@@ -38,11 +38,15 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $qr = null;
 
+    #[ORM\ManyToMany(targetEntity: Orders::class, mappedBy: 'product')]
+    private Collection $orders;
+
   
 
     public function __construct()
     {
         $this->artists = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -152,6 +156,33 @@ class Product
     public function setQr(string $qr): static
     {
         $this->qr = $qr;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Orders>
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Orders $order): static
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders->add($order);
+            $order->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Orders $order): static
+    {
+        if ($this->orders->removeElement($order)) {
+            $order->removeProduct($this);
+        }
 
         return $this;
     }
