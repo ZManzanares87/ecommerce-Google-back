@@ -12,7 +12,9 @@
                 <th>Name</th>
                 <th>Country</th>
                 <th>Discipline</th>
+                <th>Product</th>
                 <th>Image</th>
+
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +26,7 @@
                 <td>{{ artist.country }}</td>
                 <td>{{ artist.discipline }}</td>
                 <td>{{ artist.image }}</td>
+                <td>{{ artist.product }}</td>
                 <td>
                     <a href="{{ path('app_artist_show', {'id': artist.id}) }}"class="btn btn-primary btn-show">show</a>
                     <a href="{{ path('app_artist_edit', {'id': artist.id}) }}"class="btn btn-secondary btn-edit">edit</a>
