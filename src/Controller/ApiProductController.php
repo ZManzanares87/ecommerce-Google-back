@@ -22,7 +22,7 @@ class ApiProductController extends AbstractController
                 'name' => $product->getName(),
                 'price' => $product->getPrice(),
                 'image' => $product->getImage(),
-                //'qr' => $product->getQr(),
+                'qr' => $product->getQr(),
             ];
         }
 

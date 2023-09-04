@@ -17,5 +17,19 @@ ya esta registro login envio de email creada plantilla pero la base nada mas hay
 easy/admin instalado instalo css/inliner
 no voy ausar easy admin si no datatables
 ya instalado en base.html.twig con cdn 
+tengo estilos css para botones en vistas index artis.product en show
+test Apuntes Eva aparco momentaneamente panther crawler metodo jorge
+composer require --dev symfony/test-pack
+composer require --dev dama/doctrine-test-bundle
+php bin/console make:test
+php bin/console --env=test doctrine:database:create
+php bin/console --env=test doctrine:schema:create
+Ejecutar el TEST
+php bin/phpunit
 
+
+
+ Write test cases in the tests/ folder
+  * Use MakerBundle's make:test command as a shortcut!
+  * Run the tests with php bin/phpunit
 
