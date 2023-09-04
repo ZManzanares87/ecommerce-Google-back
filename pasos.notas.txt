@@ -27,9 +27,14 @@ php bin/console --env=test doctrine:schema:create
 Ejecutar el TEST
 php bin/phpunit
 
+TEST:
+entidades : muy bien 
+Controladores: no los hace bien revisar, artist y category not found no he hecho mas
+Form: sencillos pero los hace bien no hago el de user que faltan campos para no tener que 
+poner mas cuando registro a alguiend e pruebas
 
 
- Write test cases in the tests/ folder
-  * Use MakerBundle's make:test command as a shortcut!
-  * Run the tests with php bin/phpunit
+
+
+
 
