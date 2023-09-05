@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -34,25 +32,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $last_name = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $phone = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?bool $likes = null;
-
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Orders::class)]
-    private Collection $orders;
-
-    public function __construct()
-    {
-        $this->orders = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -160,7 +144,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->name;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -172,63 +156,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->last_name;
     }
 
-    public function setLastName(?string $last_name): static
+    public function setLastName(string $last_name): static
     {
         $this->last_name = $last_name;
-
-        return $this;
-    }
-
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(?string $phone): static
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    public function isLikes(): ?bool
-    {
-        return $this->likes;
-    }
-
-    public function setLikes(?bool $likes): static
-    {
-        $this->likes = $likes;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Orders>
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(Orders $order): static
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
-            $order->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrder(Orders $order): static
-    {
-        if ($this->orders->removeElement($order)) {
-            // set the owning side to null (unless already changed)
-            if ($order->getUser() === $this) {
-                $order->setUser(null);
-            }
-        }
 
         return $this;
     }
