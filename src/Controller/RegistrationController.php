@@ -33,7 +33,8 @@ class RegistrationController extends AbstractController
         $user = new User();
         $user->setEmail($data['email']);
         $user->setPassword(password_hash($data['password'], PASSWORD_DEFAULT));
-
+        $user->setName($data['name']);
+        $user->setLastName($data['last_name']);
 
         $em = $doctrine->getManager();
         $em->persist($user);
