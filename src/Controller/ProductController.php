@@ -60,38 +60,47 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             /** @var UploadedFile $brochureFile */
             $brochureFile = $form->get('brochure')->getData();
-
-
+            $qrFile = $form->get('qr')->getData();
+            
             // this condition is needed because the 'brochure' field is not required
             // so the PDF file must be processed only when a file is uploaded
-            if ($brochureFile) {
+            if ($brochureFile && $qrFile) {
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $qrFilename = pathinfo($qrFile->getClientOriginalName(), PATHINFO_FILENAME);
+                
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
-
-                // Move the file to the directory where brochures are stored
+                
+                $safeQrFilename = $slugger->slug($qrFilename);
+                $newqrFilename = $safeQrFilename . '-' . uniqid() . '.' . $qrFile->guessExtension();
+                
+                // Move the files to the directory where brochures are stored
                 try {
                     $brochureFile->move(
                         $this->getParameter('images_directory'),
                         $newFilename
                     );
+                    $qrFile->move(
+                        $this->getParameter('images_directory'),
+                        $newqrFilename
+                    );
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
-
+                
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
+                $product->setQr($newqrFilename);
                 $product->setImage($newFilename);
+                
                 $entityManager->persist($product);
                 $entityManager->flush();
             }
-
+            
             // ... persist the $product variable or any other work
-
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
         }
 
