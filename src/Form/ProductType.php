@@ -16,8 +16,8 @@ class ProductType extends AbstractType
         $builder
             ->add('name')
             ->add('price')
-            ->add('image', FileType::class, [
-                'label' => 'Imagen',
+            ->add('brochure', FileType::class, [
+                'label' => 'Brochure',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
@@ -30,12 +30,15 @@ class ProductType extends AbstractType
                 // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
                     new File([
-                        'maxSize' => '1024k',
+                        'maxSize' => '4096k',
                         'mimeTypes' => [
-                            'application/pdf',
-                            'application/x-pdf',
+                            'image/jpeg',
+                            'image/png',
+                            'image/gif',
+                            'image/glb',
+                            'image/gltf',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                        'mimeTypesMessage' => 'Please upload a valid image',
                     ])
                 ],
             ])
