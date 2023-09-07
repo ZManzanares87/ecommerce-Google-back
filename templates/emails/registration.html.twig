@@ -1,34 +1,41 @@
-<h1>Hi! Please confirm your email!</h1>
+{# <h1>Welcome {{ email.toName }}!</h1> #}
 {# <img src="{{ email.image('@images/google.png') }}" alt="Logo"> #}
 
 <p>
-	Please confirm your email address by clicking the following link:
+	
 	<br><br>
 	{# <a href="{{ signedUrl|raw }}">Confirm my Email</a>. #}
-		    This link will expire in
+		    
 	{# {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}. #}
-</p>
+    {# <img src="{{ email.image('@assets/images/logo.png') }}" alt="Logo"><p>l1png</p>
+	<img src="{{ email.image ('@assets/images/logo.svg') }}" alt="Logo"><p>l1png</p> #}
+	{# <img src="{{ email.image('@images/logo.png') }}" alt="Imagen de ejemplo"><p>lpng</p>
+	
 
-<p>
-	Cheers!
 </p>
-{# 
+    <p>Su correo se ha enviado correctamente, gracias por contactar con  
+    Google 3D Aesthetic. No dejes de visitarnos en nuestro espacio en el metaverso.</p>
+<p>
+	Saludos.
+</p> #}
+
 {% block content %}
 	<div class="container ">
-		{% apply inky_to_html | inline_css(source('@styles/email.css'))%}
+		{% apply inline_css(source('@styles/email.css'))%}
 		<row>
 			<columns large="12" class="text-center">
-				<h1>Bienvenido a mi sitio web</h1>
-				<p>Este es un ejemplo de cómo usar Inky con Twig.</p>
+				<h1>Welcome {{ email.toName }}!</h1>
+				Su correo se ha enviado correctamente, gracias por contactar con  
+    Google 3D Aesthetic. No dejes de visitarnos en nuestro espacio en el metaverso.</p>
 			</columns>
 
 		</row>
 		<row>
 			<columns large="6">
 				<p>parece que funciona</p>
-				<img src="{{ email.image('@images/google.png') }}" alt="Imagen de ejemplo">
+				<img src="{{ email.image('@images/logo.png') }}" alt="Imagen de ejemplo">
 			</columns>
 		</row>
 		{% endapply %}
 	</div>
-{% endblock %} #}
+{% endblock %}

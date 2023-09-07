@@ -10,3 +10,59 @@ creo las entidades, las relaciones y los crud artista producto categoria
 y hago otro commit
 
 copio la function front register de RegistrationController de jorge token
+
+
+ya esta registro login envio de email creada plantilla pero la base nada mas hay que revisar google/mailer en prod 
+
+easy/admin instalado instalo css/inliner
+no voy ausar easy admin si no datatables
+ya instalado en base.html.twig con cdn 
+tengo estilos css para botones en vistas index artis.product en show
+test Apuntes Eva aparco momentaneamente panther crawler metodo jorge
+composer require --dev symfony/test-pack
+composer require --dev dama/doctrine-test-bundle
+php bin/console make:test
+php bin/console --env=test doctrine:database:create
+php bin/console --env=test doctrine:schema:create
+Ejecutar el TEST
+php bin/phpunit
+
+TEST:
+entidades : muy bien 
+Controladores: no los hace bien revisar, artist y category not found no he hecho mas
+Form: sencillos pero los hace bien no hago el de user que faltan campos para no tener que 
+poner mas cuando registro a alguiend e pruebas
+
+Instrucciones Ia para subir imagenes
+Para subir imágenes y exponerlas en tu API Symfony, así como llamarlas desde React, a continuación se detallan los pasos que debes seguir: 
+ 
+1. Instalación del paquete: En tu proyecto Symfony, instala el paquete "SymfonyCasts/UploaderBundle" utilizando el comando 
+ composer require symfonycasts/uploader-bundle . 
+ 
+2. Configuración del bundle: En el archivo  config/packages/uploader.yaml , configura la ubicación de almacenamiento de las 
+imágenes, el directorio de carga, el tamaño máximo de archivo, etc. Puedes consultar la documentación del bundle para obtener
+ más detalles sobre las opciones de configuración. 
+ 
+3. Configuración de la entidad: En la entidad  Producto , agrega un campo de tipo  string  para almacenar el nombre de la imagen. 
+Utiliza la anotación  @SymfonyCasts/Uploader/Mapping/UploadableField  para indicar que este campo se gestionará mediante el bundle.
+ Asegúrate de que la entidad tenga los getters y setters adecuados para este campo. 
+ 
+4. Controlador y formulario: Crea un controlador y un formulario para manejar la creación y actualización de productos. Asegúrate 
+de agregar un campo de tipo  FileType  al formulario para permitir la selección de la imagen. 
+ 
+5. Lógica de subida de imágenes: En el controlador, maneja la lógica de subida de imágenes. Utiliza el servicio proporcionado por 
+el bundle para mover y almacenar la imagen en la ubicación configurada. 
+ 
+6. Exposición de la API: Configura tu controlador para exponer la API necesaria para obtener los productos, incluyendo la URL de la 
+imagen en la respuesta. 
+ 
+7. Consumo de la API desde React: En tu aplicación React, utiliza la función  fetch  (o una librería de manejo de peticiones HTTP como Axios) 
+para llamar a la API y obtener los productos. Asegúrate de incluir el campo de la imagen en la respuesta y mostrarlo en tu interfaz de usuario. 
+ 
+Recuerda que estos pasos son una guía general y pueden variar según la estructura y configuración específica de tu proyecto. Te recomendaría 
+consultar la documentación oficial del paquete "SymfonyCasts/UploaderBundle" para obtener más detalles sobre la configuración y el uso del bundle.
+
+
+
+
+Subir archivos doc
