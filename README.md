@@ -6,12 +6,17 @@
 1. [Descripción](#descripción)
 2. [Miembros](#miembros) 
 3. [Diseño](#diseño)
-4. [Tecnologias](#tecnologias)
+4. [Tecnologías](#tecnologías)
 5. [Herramientas](#herramientas)
-6. [Instalar-proyecto](#Instalar-proyecto)
-7. [Tests](#tests)
-8. [Metodologias](#metodologias)
-9. [Competencias-básicas](#Competencias-básicas)
+6. [Instalar Proyecto](#instalar-proyecto)
+7. [Estructura](#estructura)
+8. [Estructura de API](#estructura-de-api)
+9. [Tests](#tests)
+10. [Metodologías](#metodologías)
+11. [Competencias Básicas](#competencias-básicas)
+12. [Contacto](#contacto)
+13. [Colaboradores](#colaboradores)
+14. [Links](#links)
 
 ## Descripción     
 Google 3D Aesthetic te invita a un sitio web para explorar y comprar cuadros y esculturas en 3D de artistas destacados.
@@ -29,10 +34,16 @@ Este proyecto fue creado por un equipo de 5 programadores de frontend y backend:
  <img src="" width="300px"> 
 
 ## Características Destacadas
-- 
--
-- 
-- 
+*Creación de una API con Symfony**: Hemos desarrollado una API completa con Symfony.
+- **Entidades, formularios, repositorios, controladores y templates**: Creamos y organizamos todos estos componentes para gestionar nuestra aplicación.
+- **Relación de entidades**: Hemos establecido relaciones entre las entidades (puedes ver una foto de las tablas relacionadas).
+- **Seguridad por roles de usuario y token (JWT)**: Implementamos un sistema de seguridad que se basa en roles de usuario y tokens JWT.
+- **Tests con PHPUnit**: Realizamos pruebas exhaustivas utilizando PHPUnit.
+- **Utilización de Datatables y Bootstrap**: Utilizamos Datatables y Bootstrap para mejorar la funcionalidad y la estética de nuestros formularios.
+- **Envío de Email de bienvenida**: Los usuarios que se registran reciben un email de bienvenida.
+- **Configuración de rutas para imágenes y CSS en los emails (cssinliner)**: Configuramos rutas para cargar imágenes y estilos CSS en los correos electrónicos.
+- **Configuración de Cors (nelmioCors)**: Implementamos Cors para permitir solicitudes desde otros orígenes.
+- **Carga de imágenes desde formularios**: Los usuarios pueden cargar imágenes desde los formularios para acceder a ellas desde el front. Modificamos el formulario del producto y el controlador de API de productos.
 - Diseño Responsivo: La página se adapta a diferentes dispositivos y tamaños de pantalla.
 
   ## Tecnologías
@@ -56,6 +67,7 @@ Este proyecto fue creado por un equipo de 5 programadores de frontend y backend:
  <a herf="https://trello.com/b/MEFwJ2xu/frases">
  <img src= "https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white"></a>
  <img src= "https://github.com/ZManzanares87/ecommerce-Google-back/assets/126781409/d9181002-e7cd-4039-8a1a-4f2422d7128f" width="50px">
+  <img src= "https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white">
 
 </p>
 
@@ -68,6 +80,9 @@ Este proyecto fue creado por un equipo de 5 programadores de frontend y backend:
 ## Estructura
 
 <img src= "https://github.com/ZManzanares87/ecommerce-Google-back/assets/126781409/1f5b1994-fabb-442a-a29d-3f42edac54cc" width="300px">
+
+<img src= "https://github.com/ZManzanares87/ecommerce-Google-back/assets/126781409/2dc28638-0fed-402a-8555-14baf71a07e9" width="300px">
+
 
 ## Estructura de API
 
@@ -108,7 +123,7 @@ Agradecemos a los siguientes colaboradores por su valiosa contribución a este p
 - Proyecto de Google3Da:
 * https://www.figma.com/file/nTKc0OKTvjFIqGYkit6Mgv/Google?type=design&node-id=0%3A1&mode=design&t=g2VnV3slLUgIq9cP-1
 - Presentacion Enlace para ver:
-* https://www.canva.com/design/DAFsinU9KFU/xoFsNqZcf01FE9T3DDw24w/
+* https://www.canva.com/design/DAFsinU9KFU/xoFsNqZcf01FE9T3DDw24w/view
 - Trello:
 * https://trello.com/b/OaUsMmuZ/daily-google
   
