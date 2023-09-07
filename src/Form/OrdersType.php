@@ -6,6 +6,7 @@ use App\Entity\Orders;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class OrdersType extends AbstractType
 {
@@ -13,7 +14,7 @@ class OrdersType extends AbstractType
     {
         $builder
             ->add('amount')
-            ->add('date')
+            //->add('date')
             ->add('cost')
             ->add('user')
             ->add('product')

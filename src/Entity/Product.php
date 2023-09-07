@@ -28,6 +28,7 @@ class Product
 
     #[ORM\Column]
     private ?int $stock = null;
+   
 
     #[ORM\ManyToOne(inversedBy: 'product')]
     private ?Category $category = null;

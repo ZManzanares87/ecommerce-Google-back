@@ -36,6 +36,7 @@ class Orders
     public function __construct()
     {
         $this->product = new ArrayCollection();
+        $this->date = new \DateTime(); 
     }
 
     public function getId(): ?int
