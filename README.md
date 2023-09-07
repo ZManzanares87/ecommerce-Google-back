@@ -14,7 +14,7 @@
 9. [Competencias-básicas](#Competencias-básicas)
 
 ## Descripción     
-Google 3D Aesthetic te invita 
+Google 3D Aesthetic te invita a un sitio web para explorar y comprar cuadros y esculturas en 3D de artistas destacados.
 
 ## Equipo
 Este proyecto fue creado por un equipo de 5 programadores de frontend y backend:
@@ -62,8 +62,16 @@ Este proyecto fue creado por un equipo de 5 programadores de frontend y backend:
   ## Instalar Proyecto
 
 * Clone git https://github.com/ZManzanares87/ecommerce-Google-back.git
+* composer install
 * 
   
+## Estructura
+
+<img src= "https://github.com/ZManzanares87/ecommerce-Google-back/assets/126781409/1f5b1994-fabb-442a-a29d-3f42edac54cc" width="300px">
+
+## Estructura de API
+
+<img src= "https://github.com/ZManzanares87/ecommerce-Google-back/assets/126781409/7dac4197-7138-4458-b621-92ef86ccf82f" width="300px">
 
 
 ## Tests 
