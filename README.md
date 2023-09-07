@@ -61,17 +61,8 @@ Este proyecto fue creado por un equipo de 5 programadores de frontend y backend:
 
   ## Instalar Proyecto
 
-* Clone git https://github.com/EvaBustamante7/ecommerce-Google-front.git
-* npm install
-- Comandos para la inmersiva:
-* npm install @react-three/drei
-* npm install @react-three/fiber
-* npm install leva
-- Para iconos footer:
-* npm i @fortawesome/react-fontawesome
-* npm i @fortawesome/free-brands-svg-icons
-* npm i slick-carousel
-* npm install react-google-recaptcha
+* Clone git https://github.com/ZManzanares87/ecommerce-Google-back.git
+* 
   
 
 
@@ -109,7 +100,7 @@ Agradecemos a los siguientes colaboradores por su valiosa contribución a este p
 - Proyecto de Google3Da:
 * https://www.figma.com/file/nTKc0OKTvjFIqGYkit6Mgv/Google?type=design&node-id=0%3A1&mode=design&t=g2VnV3slLUgIq9cP-1
 - Presentacion Enlace para ver:
-* https://www.canva.com/design/DAFr48_Yhvw/RLr3raHTXSNaFIn49pL0og
+* https://www.canva.com/design/DAFsinU9KFU/xoFsNqZcf01FE9T3DDw24w/
 - Trello:
 * https://trello.com/b/OaUsMmuZ/daily-google
   
