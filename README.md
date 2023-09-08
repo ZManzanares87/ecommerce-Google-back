@@ -1,4 +1,4 @@
-# ecommerce-Google-back
+# Google Aesthetics back
 
 <p align="center"><img width="735" alt="logo" src="https://github.com/EvaBustamante7/ecommerce-Google-front/assets/126781409/04f5c7a2-21c7-4c34-9e07-312508afed73"></p>
 <p align="center">
