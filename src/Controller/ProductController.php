@@ -112,17 +112,61 @@ class ProductController extends AbstractController
 
 
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, SluggerInterface $slugger, EntityManagerInterface $entityManager, Product $product): Response
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
+            // Eliminar las imágenes antiguas
+            $oldImage = $product->getImage();
+            $oldQr = $product->getQr();
+            
+            if ($oldImage) {
+                unlink($this->getParameter('images_directory') . '/' . $oldImage);
+            }
+            
+            if ($oldQr) {
+                unlink($this->getParameter('images_directory') . '/' . $oldQr);
+            }
+            
+            /** @var UploadedFile $brochureFile */
+            $brochureFile = $form->get('brochure')->getData();
+            $qrFile = $form->get('qr')->getData();
+            
+            if ($brochureFile && $qrFile) {
+                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $qrFilename = pathinfo($qrFile->getClientOriginalName(), PATHINFO_FILENAME);
+                
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
+                
+                $safeQrFilename = $slugger->slug($qrFilename);
+                $newqrFilename = $safeQrFilename . '-' . uniqid() . '.' . $qrFile->guessExtension();
+                
+                try {
+                    $brochureFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                    
+                    $qrFile->move(
+                        $this->getParameter('images_directory'),
+                        $newqrFilename
+                    );
+                } catch (FileException $e) {
+                    // Manejar la excepción si ocurre algún error durante la carga del archivo
+                }
+                
+                $product->setQr($newqrFilename);
+                $product->setImage($newFilename);
+            }
+            
             $entityManager->flush();
-
+            
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
         }
-
+        
         return $this->renderForm('product/edit.html.twig', [
             'product' => $product,
             'form' => $form,
