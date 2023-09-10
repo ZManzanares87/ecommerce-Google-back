@@ -18,6 +18,8 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
+               
+                
                 <td>
                     <a href="{{ path('app_category_show', {'id': category.id}) }}"class="btn btn-primary btn-show">show</a>
                     <a href="{{ path('app_category_edit', {'id': category.id}) }}"class="btn btn-secondary btn-edit">edit</a>

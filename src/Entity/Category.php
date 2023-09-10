@@ -23,6 +23,8 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
     private Collection $product;
 
+
+
     public function __construct()
     {
         $this->product = new ArrayCollection();
@@ -74,4 +76,5 @@ class Category
 
         return $this;
     }
+
 }

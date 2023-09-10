@@ -29,7 +29,7 @@ public function testSetPrice(): void
     $this->assertEquals($price, $product->getPrice());
 }
 
-// Agrega más pruebas para los demás métodos de la clase Product según tus necesidades
+
 public function testSetImage(): void
 {
     $product = new Product();

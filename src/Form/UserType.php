@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class User1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -16,7 +16,8 @@ class UserType extends AbstractType
             ->add('roles')
             ->add('password')
             ->add('isVerified')
-            
+            ->add('name')
+            ->add('last_name')
         ;
     }
 
