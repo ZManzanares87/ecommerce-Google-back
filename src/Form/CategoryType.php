@@ -14,26 +14,7 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('brochure', FileType::class, [
-                'label' => 'Imagen',
-                'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '4096k',
-                        'mimeTypes' => [
-                            'image/jpeg',
-                            'image/png',
-                            'image/gif',
-                            'image/glb',
-                            'image/gltf',
-                        ],
-                        'mimeTypesMessage' => 'Please upload a valid image',
-                    ])
-                ],
-            ])
-        ;
+            ->add('name');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -58,6 +58,7 @@
 					color: #fff;
 					text-decoration: none;
 					border-radius: 5px;
+					max-width: 100px;
 				}
 				            input {
                 max-width: 500px
@@ -81,9 +82,7 @@ $('.table').DataTable(); // Reemplaza 'miTabla' con el ID de tu tabla HTML
 		{% endblock %}
 	</head>
 	<body class="bg-body-secondary row">
-        <form class="container-fluid mt-5 p-5 bg-white ">
-		<label class="form-control">
-		<input class="form-control">
+        
 		{% block body %}
 			
 		{% endblock %}

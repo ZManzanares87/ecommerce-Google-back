@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>User index</h1>
+
+    <table class="table stripe row-border compact m-1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>IsVerified</th>
+                <th>Name</th>
+                <th>Last_name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td style="max-width: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ user.password }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}"class="btn btn-primary btn-show">show</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}"class="btn btn-secondary btn-edit">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_new') }}"class="btn-create">Create new</a>
+{% endblock %}

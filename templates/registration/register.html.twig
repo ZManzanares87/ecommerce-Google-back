@@ -1,63 +1,72 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Register
 {% endblock %}
-
 {% block body %}
 	{% for flash_error in app.flashes('verify_email_error') %}
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 	{% endfor %}
-
-	<form  class="container  justify-content-center ">
+	{# <form class="container  m-5 ">
 		<h1 class="mt-5">Register</h1>
-
 		{{ form_errors(registrationForm) }}
-
 		{{ form_start(registrationForm) }}
-
-		<div class="form-group">
-			{{ form_label(registrationForm.email, 'Email address', {
-                'label_attr': {'for': 'exampleInputEmail1'}
+		<div class="form-group ">
+			{{ form_label(registrationForm.email 'label_attr': {'for': 'exampleInputEmail1'} 
             }) }}
-			{{ form_widget(registrationForm.email, {
-                'attr': {'class': 'form-control', 'placeholder': 'Enter email', 'id': 'exampleInputEmail1', 'aria-describedby': 'emailHelp'}
+			{{ form_widget(registrationForm.email, { 
+                'attr': {'class': 'form-control', 'placeholder': 'Enter email', 'id': 'exampleInputEmail1', 'aria-describedby': 'emailHelp'} 
             }) }}
 			<small id="emailHelp" class="form-text text-muted"></small>
 		</div>
 		<div class="form-group">
-			{{ form_label(registrationForm.plainPassword, 'Password', {
-                'label_attr': {'for': 'exampleInputPassword1'}
+			{{ form_label(registrationForm.plainPassword, 'Password', { 
+                'label_attr': {'for': 'exampleInputPassword1'} 
             }) }}
-			{{ form_widget(registrationForm.plainPassword, {
-                'attr': {'class': 'form-control', 'placeholder': 'Password', 'id': 'exampleInputPassword1'}
-            }) }}
-		</div>
-		<div class="form-group">
-			{{ form_label(registrationForm.name, 'Name', {
-                'label_attr': {'for': 'exampleInputName'}
-            }) }}
-			{{ form_widget(registrationForm.name, {
-                'attr': {'class': 'form-control', 'placeholder': 'Enter name', 'id': 'exampleInputName'}
+			{{ form_widget(registrationForm.plainPassword, { 
+                'attr': {'class': 'form-control', 'placeholder': 'Password', 'id': 'exampleInputPassword1'} 
             }) }}
 		</div>
 		<div class="form-group">
-			{{ form_label(registrationForm.last_name, 'Last Name', {
-                'label_attr': {'for': 'exampleInputName'}
+			{{ form_label(registrationForm.name, 'Name', { 
+                'label_attr': {'for': 'exampleInputName'} 
             }) }}
-			{{ form_widget(registrationForm.last_name, {
-                'attr': {'class': 'form-control', 'placeholder': 'Enter last name', 'id': 'exampleInputName'}
+			{{ form_widget(registrationForm.name, { 
+                'attr': {'class': 'form-control', 'placeholder': 'Enter name', 'id': 'exampleInputName'} 
             }) }}
 		</div>
-
+		<div class="form-group">
+			{{ form_label(registrationForm.last_name, 'Last Name', { 
+                'label_attr': {'for': 'exampleInputName'} 
+            }) }}
+			{{ form_widget(registrationForm.last_name, { 
+                'attr': {'class': 'form-control', 'placeholder': 'Enter last name', 'id': 'exampleInputName'} 
+            }) }}
+		</div>
 		<div class="form-check">
-			{{ form_widget(registrationForm.agreeTerms, {
-                'attr': {'class': 'form-check-input', 'id': 'exampleCheck1'}
+			{{ form_widget(registrationForm.agreeTerms, { 
+                'attr': {'class': 'form-check-input', 'id': 'exampleCheck1'} 
             }) }}
-			{{ form_label(registrationForm.agreeTerms, 'Check me out', {
-                'label_attr': {'class': 'form-check-label', 'for': 'exampleCheck1'}
+			{{ form_label(registrationForm.agreeTerms, 'Check me out', { 
+                'label_attr': {'class': 'form-check-label', 'for': 'exampleCheck1'} 
             }) }}
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
 		{{ form_end(registrationForm) }}
-	</form>
+		
+	</form> #}
+	<h1>Register</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+		
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+		{{ form_row(registrationForm.name) }}
+		{{ form_row(registrationForm.last_name) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn-show">Register</button>
+    {{ form_end(registrationForm) }}
 {% endblock %}

@@ -34,6 +34,7 @@ class ProductType extends AbstractType
                     ])
                 ],
             ])
+            
             ->add('stock')
             ->add('qr', FileType::class, [
                 'label' => 'QR',
