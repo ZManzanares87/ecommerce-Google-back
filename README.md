@@ -56,7 +56,7 @@ Este proyecto fue creado por un equipo de 5 programadores de frontend y backend:
  <img src= "https://img.shields.io/badge/composer-%23000000.svg?style=for-the-badge&logo=composer-install&logoColor=white"></img>
  <img src= "https://img.shields.io/badge/Symfony-%23E34F26.svg?style=for-the-badge&logo=Symfony&logoColor=white"></img>
  <img src= "https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white"></img> 
-
+ <img src= "https://github.com/ZManzanares87/ecommerce-Google-back/assets/126781409/d69b1b06-bca1-428b-8b52-49c4ec7f158c" width="80px"></img> 
  
  </p>
 
