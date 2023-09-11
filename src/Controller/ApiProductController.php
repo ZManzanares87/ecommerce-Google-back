@@ -19,10 +19,11 @@ class ApiProductController extends AbstractController
         $data = [];
         foreach ($products as $product) {
             $data[] = [
+                'id' => $product->getId(),
                 'name' => $product->getName(),
                 'price' => $product->getPrice(),
                 'image' => $product->getImage(),
-                //'qr' => $product->getQr(),
+                'qr' => $product->getQr(),
             ];
         }
 

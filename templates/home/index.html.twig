@@ -1,20 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Welcome to Home Page{% endblock %}
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper { margin: 1em auto; max-width: 600px; width: 70%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .custom-button {
+        background-color: white;
+        border: 2px solid;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: black;
+        display: block;
+        width: 100%;
+        text-align: center;
+        list-style-type: none;
+    }
+    
+    .custom-button:nth-child(2) { border-color: blue; }
+    .custom-button:nth-child(3) { border-color: green; }
+    .custom-button:nth-child(4) { border-color: purple; }
+    .custom-button:nth-child(5) { border-color: orange; }
+    ul {
+  list-style: none;
+}
 </style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/JUNAN/Desktop/Proyecto Google/Proyecto google front back/ecommerce-Google-back/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/JUNAN/Desktop/Proyecto Google/Proyecto google front back/ecommerce-Google-back/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
+<div class="example-wrapper ">
+    <h1 class="text-center">Welcome to Home </h1>
+    <ul class="m-5" style="padding-left: 0;">
+        <li><a href="{{ path('app_artist_index') }}" class="btn btn-primary custom-button">Go to Artist</a></li>
+        <li><a href="{{ path('app_product_index') }}" class="btn btn-primary custom-button">Go to Product</a></li>
+        <li><a href="{{ path('app_orders_index') }}" class="btn btn-primary custom-button">Go to Orders</a></li>
+        <li><a href="{{ path('app_category_index') }}" class="btn btn-primary custom-button">Go to Categories</a></li>
+        <li><a href="{{ path('app_user_index') }}" class="btn btn-primary custom-button">Go to User</a></li>
     </ul>
 </div>
 {% endblock %}
+  
