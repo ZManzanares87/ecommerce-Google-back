@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Entity\User;
@@ -17,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\Persistence\ManagerRegistry;
+
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
@@ -25,7 +27,7 @@ class RegistrationController extends AbstractController
     {
         $this->emailVerifier = $emailVerifier;
     }
-    #[Route('/token/register', name: 'register', methods:'POST')]
+    #[Route('/token/register', name: 'register', methods: 'POST')]
     public function register(Request $request, ValidatorInterface $validator, ManagerRegistry $doctrine, MailerInterface $mailer): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
@@ -42,22 +44,20 @@ class RegistrationController extends AbstractController
 
         ##ENVIAR EMAIL 
         $email = (new TemplatedEmail())
-        ->from(new Address('juananprog@gmail.com', 'Google 3D Aesthetics'))
-        ->to($user->getEmail())
-        ->subject('Gracias por registrarte')
-        ->htmlTemplate('emails/registration.html.twig')
-        ->context([
-            'user' => $user,
-        ]);
+            ->from(new Address('juananprog@gmail.com', 'Google 3D Aesthetics'))
+            ->to($user->getEmail())
+            ->subject('Gracias por registrarte')
+            ->htmlTemplate('emails/registration.html.twig')
+            ->context([
+                'user' => $user,
+            ]);
 
-    $mailer->send($email);
+        $mailer->send($email);
 
         return new JsonResponse(['success' => true]);
-
-
     }
     #[Route('/register', name: 'app_register')]
-    public function registerback(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function registerback(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -76,15 +76,16 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('juananprog@gmail.com', 'gmailjuananprogbot'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
+            $email = (new TemplatedEmail())
+                ->from(new Address('juananprog@gmail.com', 'Google 3D Aesthetics'))
+                ->to($user->getEmail())
+                ->subject('Gracias por registrarte')
+                ->htmlTemplate('emails/registration.html.twig')
+                ->context([
+                    'user' => $user,
+                ]);
             // do anything else you need here, like send an email
-
+            $mailer->send($email);
             return $this->redirectToRoute('app_home');
         }
 
@@ -92,7 +93,7 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
-    
+
     // #[Route('front/register', name: 'api_register')]
     // public function apiRegister(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     // {

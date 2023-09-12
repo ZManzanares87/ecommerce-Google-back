@@ -1,21 +1,20 @@
-
-
-
-
 {% block content %}
 	<div class="container ">
 		{% apply inline_css(source('@styles/email.css'))%}
 		<row>
 			<columns large="12" class="text-center">
 				<h1>Welcome !</h1>
-				Su correo se ha enviado correctamente, gracias por contactar con  
-    Google 3D Aesthetic. No dejes de visitarnos en nuestro espacio en el metaverso.</p>
+				<p>
+					Su correo se ha enviado correctamente, gracias por contactar con  
+									    Google 3D Aesthetic.
+				</p>
+				<p>No dejes de visitarnos en nuestro espacio en el metaverso.</p>
 			</columns>
 
 		</row>
 		<row>
-			<columns large="6">
-				
+			<columns large="12">
+
 				<img src="{{ email.image('@images/logo.png') }}" alt="Imagen de ejemplo">
 			</columns>
 		</row>
