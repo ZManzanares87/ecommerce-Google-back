@@ -94,50 +94,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    // #[Route('front/register', name: 'api_register')]
-    // public function apiRegister(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
-    // {
-    //     $user = new User();
-
-    //     $email = $request->query->get('username');
-    //     $password = $request->query->get('password');
-
-    //     // if(!$email) {
-    //     //     $password = $request->attributes->get('password');
-    //     // } 
-
-
-    //     // sacar user y password del request
-    //     // ...
-
-    //     // encode the plain password
-    //     $user->setPassword(
-    //         $userPasswordHasher->hashPassword(
-    //             $user,
-    //             $password
-    //         )
-    //     );
-
-    //     $user->setEmail($email);
-
-    //     $entityManager->persist($user);
-    //     $entityManager->flush();
-
-    //     // generate a signed url and email it to the user
-    //     $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-    //         (new TemplatedEmail())
-    //             ->from(new Address('info@coderf5.es', 'Acme Mail Bot'))
-    //             ->to($user->getEmail())
-    //             ->subject('Please Confirm your Email')
-    //             ->htmlTemplate('registration/confirmation_email.html.twig')
-    //         );
-    //     // do anything else you need here, like send an email
-
-    //     dump('ok');die;
-
-    //     return $this->redirectToRoute('home');
-    // }
-
+   
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request): Response
     {
