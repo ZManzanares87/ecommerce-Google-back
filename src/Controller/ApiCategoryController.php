@@ -16,7 +16,7 @@ class ApiCategoryController extends AbstractController
         $data = [];
         foreach ($categories as $category) {
             $data[] = [
-                'image' => $category->getImage(),
+               
                 'typecategory' => $category->getName(),
                 'id' => $category->getId(),
                 

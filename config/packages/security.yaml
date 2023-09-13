@@ -53,9 +53,13 @@ security:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/home, roles: ROLE_ADMIN }
          - { path: ^/register, roles: ROLE_ADMIN }
+         - { path: ^/product, roles: ROLE_ADMIN }
+         - { path: ^/artist, roles: ROLE_ADMIN }
+         - { path: ^/orders, roles: ROLE_ADMIN }
+         - { path: ^/user, roles: ROLE_ADMIN }
          - { path: ^/login, roles: PUBLIC_ACCESS }
          - { path: ^/api/login, roles: PUBLIC_ACCESS }
-         - { path: ^/api/products,       roles:  PUBLIC_ACCESS }
+         - { path: ^/api/products, roles:  PUBLIC_ACCESS }
          
 
 when@test:
